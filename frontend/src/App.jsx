@@ -1,19 +1,20 @@
 
 import "./App.css"
-import { Show, SignInButton, SignUpButton, UserButton } from '@clerk/react'
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react'
+
 const App = () => {
   return (
     <div>
       <h1>My App</h1>
 
-       <header>
-        <Show when="signed-out">
+      <header>
+        <SignedOut>
           <SignInButton />
           <SignUpButton />
-        </Show>
-        <Show when="signed-in">
+        </SignedOut>
+        <SignedIn>
           <UserButton />
-        </Show>
+        </SignedIn>
       </header>
     </div>
   )
