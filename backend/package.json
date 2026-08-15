@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-   "build": "shx rm -rf dist && shx cp -R src dist",
+    "build": "shx rm -rf dist && shx cp -R src dist",
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon src/index.js",
     "start": "nod src/index.js"
@@ -16,6 +16,7 @@
   "dependencies": {
     "@clerk/express": "^2.1.32",
     "cors": "^2.8.6",
+    "cron": "^4.4.0",
     "dotenv": "^17.4.2",
     "express": "^5.2.1",
     "mongoose": "^9.7.0"
