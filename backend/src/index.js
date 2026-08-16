@@ -16,8 +16,11 @@ const PORT = process.env.PORT;
 const FRONTEND_URL = process.env.FRONTEND_URL;
 const publicDir = path.join(process.cwd(), "public");
 
-
-app.use("/api/webhooks/clerk",express.raw({type:"application/json"}),clerkWebhook)
+app.use(
+  "/api/webhooks/clerk",
+  express.raw({ type: "application/json" }),
+  clerkWebhook,
+);
 
 app.use(express.json());
 app.use(cors({ origin: process.env.FRONTEND_URL, credentials: true }));
@@ -40,5 +43,5 @@ if (fs.existsSync(publicDir)) {
 app.listen(PORT, () => {
   connectDB();
   console.log("Server is running on port 3000");
-    if (process.env.NODE_ENV === "production") job.start();
+  if (process.env.NODE_ENV === "production") job.start();
 });
