@@ -11,7 +11,6 @@ router.post("/", async (req, res) => {
       res.status(503).json({ message: "Webhook secret is not provided" });
       return;
     }
-
     // clerk's verifier expects a Web Request with the raw body; express.raw gives a Buffer.
     const payload = Buffer.isBuffer(req.body)
       ? req.body.toString("utf8")
