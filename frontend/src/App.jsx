@@ -1,23 +1,28 @@
 
-import "./App.css"
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/clerk-react'
-
+import { Button } from "@heroui/react";
+import { ThemeProvider } from "./context/ThemeContext";
+import { WallpaperProvider } from "./context/WallpaperContext";
+import { Navigate, Route, Routes } from "react-router";
+import ChatPage from "./pages/ChatPage";
+import AuthPage from "./pages/AuthPage";
+import { useAuth } from "@clerk/clerk-react";
 const App = () => {
+   const { isSignedIn, isLoaded } = useAuth();
+
+if(! isLoaded) return <p>loading...</p>
   return (
-    <div>
-      <h1>My App</h1>
+    <ThemeProvider>
+      <WallpaperProvider>
+        <Routes>
+          <Route path="/" element={isSignedIn ? <ChatPage /> : <Navigate to={"/auth"} replace />} />
+          <Route
+            path="/auth"
+            element={!isSignedIn ? <AuthPage /> : <Navigate to={"/"} replace />}
+          />
+        </Routes>
+      </WallpaperProvider>
+    </ThemeProvider>
+  );
+};
 
-      <header>
-        <SignedOut>
-          <SignInButton />
-          <SignUpButton />
-        </SignedOut>
-        <SignedIn>
-          <UserButton />
-        </SignedIn>
-      </header>
-    </div>
-  )
-}
-
-export default App
+export default App;
