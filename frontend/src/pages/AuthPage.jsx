@@ -1,6 +1,6 @@
 import React from 'react'
-import AuthActionPanel from '../components/auth/AuthActionPanel'
-import AuthHeroPanel from '../components/auth/AuthHeroPanel'
+import {AuthActionPanel }from '../components/auth/AuthActionPanel'
+import {AuthHeroPanel} from '../components/auth/AuthHeroPanel'
 import AuthHeader from '../components/auth/AuthHeader'
 import { useWallpaper } from '../context/wallpaper'
 
